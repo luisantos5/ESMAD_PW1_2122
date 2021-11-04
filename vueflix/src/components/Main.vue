@@ -22,7 +22,7 @@
         id="txtScore"
         min="1"
         max="10"
-        v-model="form.score"
+        v-model.number="form.score"
       />
       <br />
       <input type="submit" value="ADD MOVIE" />

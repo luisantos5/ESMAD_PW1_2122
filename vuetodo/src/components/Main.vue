@@ -43,6 +43,7 @@
 
     <br />
     <br />
+
     <input type="text" v-model="filter.description" />
     <select v-model="filter.category">
       <option value="">ALL</option>
@@ -156,6 +157,7 @@ export default {
     changeSort() {
       this.sortToggle = this.sortToggle == "priority" ? "isDone" : "priority";
     },
+
     compareTasks(taskA, taskB) {
       if (this.sortToggle == "priority") {
         if (taskA.priority > taskB.priority) return 1;

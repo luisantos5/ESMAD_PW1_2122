@@ -1,19 +1,24 @@
+
+
+
 <template>
-  <div id="app">
-    <Candy />
-  </div>
+  <my-input @custom-change="logChange" />
 </template>
 
 <script>
-import Candy from "./components/Candy.vue";
-
+import MyInput from "./components/MyInput.vue";
 export default {
-  name: "App",
   components: {
-    Candy,
+    MyInput,
+  },
+  methods: {
+    logChange(event) {
+      console.log("ss" + event);
+    },
   },
 };
 </script>
+ 
 
 <style>
 #app {

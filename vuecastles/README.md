@@ -1,4 +1,4 @@
-# vuelinks
+# vuecastles
 
 ## Project setup
 ```

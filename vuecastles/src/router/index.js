@@ -2,8 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Castles from "../views/Castles.vue";
 import Castle from "../views/Castle.vue";
-
 import NewCastle from "../views/NewCastle.vue";
+import Error from "../views/Error.vue";
 
 Vue.use(VueRouter);
 
@@ -22,6 +22,10 @@ const routes = [
     path: "/newcastle",
     name: "newCastle",
     component: NewCastle,
+  },
+  {
+    path: "*",
+    component: Error,
   },
 ];
 

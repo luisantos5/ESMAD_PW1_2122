@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link :to="{ name: 'castles' }">Home</router-link> |
-      <router-link :to="{ name: 'NewCastle' }">Add castlesss</router-link>
+      <router-link :to="{ name: 'newCastle' }">Add castles</router-link>
     </div>
     <router-view />
   </div>

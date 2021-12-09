@@ -16,7 +16,7 @@ export default new Vuex.Store({
             location: "laponia",
           },
         ],
-    loggedUser: {},
+    loggedUser: null,
   },
   getters: {
     isUser: (state) => (username, password) =>
@@ -41,7 +41,7 @@ export default new Vuex.Store({
       localStorage.users = JSON.stringify(state.users);
     },
     SET_LOGOUT(state) {
-      state.loggedUser = {};
+      state.loggedUser = null;
       localStorage.removeItem("loggedUser");
     },
     SET_NEW_GIFT(state, payload) {

@@ -22,7 +22,7 @@
           <input type="submit" value="ADD GIFT" />
         </form>
       </form>
-      <table>
+      <table v-if="getGifts.length">
         <tr>
           <th>#</th>
           <th>NAME</th>
@@ -33,13 +33,14 @@
           <td>{{ index + 1 }}</td>
           <td>{{ gift.name }}</td>
           <td>{{ gift.quantity }}</td>
-          <td>{{ gift.children }}</td>
+          <td>{{ gift.children ? gift.children.join(",") : "NO" }}</td>
         </tr>
       </table>
+      <p v-else>NO GIFTS</p>
     </div>
     <div v-else>
       <!-- CHILDREN -->
-      <table>
+      <table v-if="getGifts.length">
         <tr>
           <th>#</th>
           <th>NAME</th>
@@ -61,6 +62,7 @@
           </td>
         </tr>
       </table>
+      <p v-else>NO GIFTS</p>
     </div>
   </div>
 </template>

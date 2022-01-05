@@ -5,6 +5,11 @@
       <input type="submit" value="GO" />
     </form>
     <p v-if="definition != ''">
+      TYPE: <select @change="changeType" v-model="type">
+        <option value="noun">NOME</option>
+        <option value="adjective">ADJETIVO</option>
+        <option value="verb">VERBO</option>
+      </select>
       <table>
         <tr>
           <th>TYPE</th>
@@ -12,19 +17,19 @@
         </tr>
         <tr>
           <td>ORIGEM</td>
-          <td>{{ definition[0].origin }}</td>
+          <td>{{ origin }}</td>
         </tr>
         <tr>
           <td>DEFINIÇÃO</td>
-          <td>{{ definition[0].meanings[0].definitions[0].definition }}</td>
+          <td>{{ definitions }}</td>
         </tr>
         <tr>
           <td>EXEMPLO</td>
-          <td><i>{{ definition[0].meanings[0].definitions[0].example }}</i> </td>
+          <td><i>{{ example }}</i> </td>
         </tr>
         <tr>
           <td>SINÓNIMOS</td>
-          <td>{{ definition[0].meanings[0].definitions[0].synonyms.slice(0,3).join(';') }}</td>
+          <td>{{ synonyms }}</td>
         </tr>
       </table>
     </p>
@@ -39,6 +44,11 @@ export default {
   data() {
     return {
       word: "",
+      type:'noun',
+      origin:'',
+      definitions:'',
+      example:'',
+      synonyms:''
     };
   },
   computed: {
@@ -47,10 +57,20 @@ export default {
   methods: {
     ...mapActions(["getDefinition"]),
     getDef() {
-      this.getDefinition(this.word).catch((err) =>
+      this.getDefinition(this.word)
+      .then(() =>{        
+        this.changeType()
+      }).catch((err) =>
         alert(`Problem handling something: ${err}.`)
       );
     },
+    changeType() {
+      this.origin = this.definition[0].origin
+      const meaning = this.definition[0].meanings.find(meaning=> meaning.partOfSpeech===this.type)
+      this.definitions = meaning.definitions[0].definition
+      this.example = meaning.definitions[0].example
+      this.synonyms = meaning.definitions[0].synonyms.slice(0,3).join(';')
+    }
   },
 };
 </script>
